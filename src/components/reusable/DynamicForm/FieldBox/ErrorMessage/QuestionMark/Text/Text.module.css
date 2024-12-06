@@ -1,0 +1,14 @@
+.text {
+  position: absolute;
+  color: var(--gray);
+  background-color: var(--white);
+  border: 1px solid var(--red);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  text-align: center;
+  font-size: var(--normal);
+  z-index: 99999;
+  top: -5.25rem;
+  left: 0;
+  transition: transform 2s ease-in-out;
+}

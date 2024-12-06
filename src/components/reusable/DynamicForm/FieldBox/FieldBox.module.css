@@ -1,0 +1,13 @@
+.small-field-box,
+.large-field-box {
+  height: 5.6rem;
+  position: relative;
+}
+
+.small-field-box {
+  width: calc(50% - 0.5rem);
+}
+
+.large-field-box {
+  width: 100%;
+}
