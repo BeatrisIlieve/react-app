@@ -21,6 +21,6 @@ export const userCredentialDetailsServiceFactory = (token) => {
     updatePassword: (userId, data) =>
       request.put(`${baseUrl}/password/${userId}`, data),
 
-    logout: (userId) => request.get(`${baseUrl}/logout/${userId}`),
+    logout: () => request.get(`${baseUrl}/logout/`),
   };
 };

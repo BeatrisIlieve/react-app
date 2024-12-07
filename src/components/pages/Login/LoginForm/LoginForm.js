@@ -45,13 +45,15 @@ export const LoginForm = () => {
         // const dataWithLanguage = { ...data, selectedLanguage: language };
 
         try {
+
           const result = await userCredentialDetailsService.login(
             data
-          );
+          )
+          
 
           clearInitialFormValuesMessages(FORM_KEYS, INITIAL_FORM_VALUES);
 
-          await updateAuthentication(result);
+          updateAuthentication(result);
         } catch (err) {
           let spreadValues = { ...values };
 

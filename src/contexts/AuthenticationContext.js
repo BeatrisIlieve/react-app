@@ -7,7 +7,10 @@ import { userCredentialDetailsServiceFactory } from "../services/userCredentialD
 export const AuthenticationContext = createContext();
 
 export const AuthenticationProvider = ({ children }) => {
-  const [authentication, setAuthentication] = useLocalStorage("token", {});
+  const [authentication, setAuthentication] = useLocalStorage(
+    "authentication",
+    {}
+  );
 
   const userCredentialDetailsService = userCredentialDetailsServiceFactory(
     authentication["token"]
@@ -20,7 +23,7 @@ export const AuthenticationProvider = ({ children }) => {
       logoutTimer = setTimeout(async () => {
         setAuthentication({});
 
-        localStorage.removeItem("token");
+        localStorage.removeItem("authentication");
         await userCredentialDetailsService.logout();
         // 600000
       }, 60000000);
@@ -49,31 +52,31 @@ export const AuthenticationProvider = ({ children }) => {
 
       clearTimeout(logoutTimer);
     };
-  }, [authentication]);
+  }, [authentication.token]);
 
   const updateAuthentication = (data) => {
+
     const token = data["token"];
 
-    setAuthentication(token);
+    setAuthentication(data);
+    console.log("login", authentication)
   };
 
   const clearToken = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("authentication");
 
     setAuthentication({});
   };
 
-  // const userId = authentication._id;
 
   const token = authentication["token"];
 
-  const isAuthenticated = !!token;
+  const isAuthenticated = !!authentication["token"];
 
   const context = useMemo(
     () => ({
       updateAuthentication,
-      // clearToken,
-      // userId,
+      clearToken,
       token,
       isAuthenticated,
     }),

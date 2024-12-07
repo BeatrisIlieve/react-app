@@ -3,9 +3,7 @@ const PASSWORD_LENGTH = {
   MAX: 255,
 };
 
-export const PASSWORD_PATTERN = new RegExp(
-  `^(?=.*[A-Z]{1})(?=.*[a-z]{1})(?=.*[0-9]{1})[A-Za-z0-9@]{${PASSWORD_LENGTH.MIN},${PASSWORD_LENGTH.MAX}}$`
-);
+export const PASSWORD_PATTERN = new RegExp("^.*$");
 
 export const PASSWORD_ERROR_MESSAGE = {
   English: "* Please enter a valid password",
